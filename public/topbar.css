@@ -78,24 +78,7 @@
     border-radius: 50%;
     cursor: pointer;
 }
-.topbar .right .searchEngine input{
-    width: 100%;
-    margin-right: 20px;
-    height: 25px;
-    border-radius: 3px;
-    padding: 0px px 0px 10px;
-    transition: all 0.5s;
-}
-.topbar .right .searchEngine{
-    width: 0px;
-    transition : all 0.5s;
-}
-.topbar .right .searchEngine.active{
-    width: 70%;
-}
-.topbar .right .searchEngine.active input{
-    opacity: 1;
-}
+
 /* Scroll animasyonu */
 .topbar .wrapper{
     opacity: 0;
@@ -106,23 +89,7 @@
 .topbar .wrapper.active{
     opacity: 1;
 }
-.topbar .left i{
-    transition: all 0.3s;
-    transform: translateX(-20px);
-}
-.topbar .wrapper.active .left i{
-    transition: all 0.3s;
-    transform: translateX(0px);
-}
-.topbar .wrapper.active .left i:nth-child(2){
-    transition: all 0.5s;
-}
-.topbar .wrapper.active .left i:nth-child(3){
-    transition: all 0.8s; 
-}
-.topbar .wrapper.active .left i:nth-child(4){
-    transition: all 1.2s;
-}
+
 .topbar .center, .topbar .right{
     transition: all 0.5s;
     transform: translateX(-10px) translateY(-10px);

@@ -39,3 +39,20 @@ function closeMenu() {
         document.getElementById('menuOverlay').style.display = 'none'; // Overlay tamamen gizlenir
     }, 400); // CSS geçiş süresiyle uyumlu
 }
+document.addEventListener("DOMContentLoaded", () => {
+    const containers = document.querySelectorAll(".story-container");
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-visible");
+          }
+        });
+      },
+      { threshold: 0.1 } // %10'u görünür olunca animasyonu başlatır
+    );
+  
+    containers.forEach((container) => observer.observe(container));
+  });
+  
