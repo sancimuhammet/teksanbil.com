@@ -18,3 +18,24 @@ stories.forEach(story => {
 
     storiesContainer.appendChild(storyElement); // Hikayeyi sayfaya ekliyoruz
 });
+// Menü simgesine tıklanınca menüyü aç
+document.getElementById('menuIcon').addEventListener('click', function () {
+    document.getElementById('sideMenu').style.right = '0'; // Menü ekranın içine gelir
+    document.getElementById('menuOverlay').style.display = 'block'; // Overlay görünür
+    document.getElementById('menuOverlay').style.opacity = '1'; // Overlay yavaşça belirir
+});
+
+// Menü kapatma simgesine tıklanınca menüyü kapat
+document.getElementById('closeMenu').addEventListener('click', closeMenu);
+
+// Overlay tıklamasıyla menüyü kapatma
+document.getElementById('menuOverlay').addEventListener('click', closeMenu);
+
+// Menü kapatma işlevi
+function closeMenu() {
+    document.getElementById('sideMenu').style.right = '-300px'; // Menü ekranın dışına gider
+    document.getElementById('menuOverlay').style.opacity = '0'; // Overlay yavaşça kaybolur
+    setTimeout(() => {
+        document.getElementById('menuOverlay').style.display = 'none'; // Overlay tamamen gizlenir
+    }, 400); // CSS geçiş süresiyle uyumlu
+}

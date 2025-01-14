@@ -12,32 +12,46 @@
 <body>
    <div class="topbar">
         <div class="wrapper target" >
-            <div class="left">
-                <i class="fa-brands fa-square-x-twitter"></i>
-                <i class="fa-brands fa-square-instagram"></i>
-                <i class="fa-brands fa-square-youtube"></i>
+            
+                <div class="center">
+                    <div class="title">TEKSANBİL</div>
+                    <div class="subtitle">Teknoloji | Sanat | Bilim</div>
                 </div>
-            <div class="center">
-                <a >ANASAYFA</a>
-                <a >HAKKINDA</a>
-                <a >İLETİŞİM</a>
-                <a href="login.html">GİRİŞ YAP</a>
-            </div>
+                
             <div class="right">
                 <span>
                     <img src="img/user/user-1.jpg" alt="user">
-                    </span>
-                <div class="searchEngine" id="searchEngine">
-                    <input type="text" placeholder="Ara...">
-                    <i class="fa fa-search" id="searchIcon"></i>
-                </div>
+                </span>
+                <i class="fa fa-bars" id="menuIcon"></i> <!-- Menü simgesi -->
             </div>
+            
+            
         </div>
-       
+        <!-- Sağdan sola açılan menü -->
+        <div id="sideMenu" class="side-menu">
+            <i class="fa fa-times" id="closeMenu"></i> <!-- Menü kapatma simgesi -->
+            <ul>
+            <li><a href="#">Anasayfa</a></li>
+            <li><a href="#">Hakkında</a></li>
+            <li><a href="#">İletişim</a></li>
+            <li><a href="login.html">Giriş Yap</a></li>
+            </ul>
+        </div>
+
+<!-- Menü dışında tıklamaları algılamak için bir overlay ekliyoruz -->
+<div id="menuOverlay" class="menu-overlay"></div>
     </div>
-    <div id="storiesContainer"></div>
+    <div id="storiesContainer">
+    </div>
      <script src="index.js"></script>
     <script src="scroll.js"></script>
     <script src="search.js"></script>
 </body>
+<footer >
+    <div>
+        <i class="fa-brands fa-square-x-twitter"></i>
+        <i class="fa-brands fa-square-instagram"></i>
+        <i class="fa-brands fa-square-youtube"></i>
+        </div>
+</footer>
 </html>
