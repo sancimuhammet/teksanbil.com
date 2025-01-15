@@ -1,24 +1,19 @@
+// api/stories.js
 const express = require('express');
-const cors = require('cors');
-
 const app = express();
-app.use(cors());
-app.use(express.json());
+app.use(express.json());  // JSON verileri parse etmek için
 
-// Geçici veri
-let stories = []; 
+let stories = [];  // Hikayelerin saklanacağı bir array (veritabanı yerine)
 
-// Tüm hikayeleri getir
-app.get('/', (req, res) => {
-    res.json(stories);
+app.post('/api/stories', (req, res) => {
+    const { title, content, author } = req.body;
+    const newStory = { title, content, author, date: new Date() };
+    stories.push(newStory);
+    res.status(201).json(newStory);  // Başarıyla eklenen hikayeyi döndürüyoruz
 });
 
-// Yeni hikaye ekle
-app.post('/', (req, res) => {
-    const { title, content, author } = req.body;
-    const newStory = { title, content, author, date: new Date().toLocaleDateString() };
-    stories.push(newStory);
-    res.status(201).json(newStory);
+app.get('/api/stories', (req, res) => {
+    res.json(stories);  // Tüm hikayeleri döndürüyoruz
 });
 
 module.exports = app;
