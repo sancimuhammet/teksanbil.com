@@ -28,6 +28,7 @@ app.post("/login", (req, res) => {
 
     if (username === "mami" && password === adminPassword) {
         res.status(200).json({ message: "Login successful!" });
+        window.location.href = 'add.html';
     } else {
         res.status(401).json({ message: "Invalid credentials!" });
     }
@@ -35,4 +36,5 @@ app.post("/login", (req, res) => {
 
 app.listen(5000, () => {
     console.log("Server running on port 5000");
+
 });

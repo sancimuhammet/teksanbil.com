@@ -29,7 +29,7 @@ addStoryForm.addEventListener('submit', async function(event) {
         alert('Hikaye eklenemedi, lütfen tekrar deneyin.');
     }
 });
-window.location.href = 'index.html';
+
 
 /*  add.html sayfasındaki formu seçiyoruz
 const addStoryForm = document.getElementById('addStoryForm');
