@@ -21,4 +21,6 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     } catch (error) {
         console.error("Login error:", error);
     }
+    console.log(username, password);
+
 });
