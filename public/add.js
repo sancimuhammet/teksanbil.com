@@ -10,7 +10,7 @@ addStoryForm.addEventListener('submit', async function(event) {
     const newStory = { title, content, author };
 
     try {
-        const response = await fetch('/api/stories', {
+        const response = await fetch('https://teksanbilcom.vercel.app/api/stories', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
