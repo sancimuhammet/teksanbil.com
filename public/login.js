@@ -1,12 +1,24 @@
-document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault();  // Formun otomatik olarak gönderilmesini engeller
-    
+document.getElementById('loginForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
     const username = document.getElementById('user').value;
     const password = document.getElementById('password').value;
 
-    if (username === 'admin' && password === '12345') {
-        window.location.href = 'add.html';  // Başarılı giriş
-    } else {
-        alert('Hatalı şifre veya kullanıcı adı');
+    try {
+        const response = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+        });
+
+        if (response.ok) {
+            window.location.href = 'add.html';
+        } else {
+            alert("Hatalı şifre veya kullanıcı adı");
+        }
+    } catch (error) {
+        console.error("Login error:", error);
     }
 });

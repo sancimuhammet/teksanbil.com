@@ -1,23 +1,29 @@
-// storiesContainer'ı seçiyoruz
-const storiesContainer = document.getElementById('storiesContainer');
+async function fetchStories() {
+  try {
+      const response = await fetch('/api/stories');
+      const stories = await response.json();
 
-// localStorage'dan hikayeleri alıyoruz
-const stories = JSON.parse(localStorage.getItem('stories')) || [];
+      const storiesContainer = document.getElementById('storiesContainer');
+      storiesContainer.innerHTML = '';
 
-// Her hikaye için bir element oluşturup sayfaya ekliyoruz
-stories.forEach(story => {
-    const storyElement = document.createElement('div');
-    storyElement.classList.add('story-container');
+      stories.forEach(story => {
+          const storyDiv = document.createElement('div');
+          storyDiv.classList.add('story');
+          storyDiv.innerHTML = `
+              <h3>${story.title}</h3>
+              <p>${story.content}</p>
+              <p><em>Yazar: ${story.author}</em></p>
+              <p><small>${story.date}</small></p>
+          `;
+          storiesContainer.appendChild(storyDiv);
+      });
+  } catch (error) {
+      console.error('Error:', error);
+  }
+}
 
-    storyElement.innerHTML = `
-        <h2 class="story-title">${story.title}</h2>
-        <p class="story-meta">Tarih: ${story.date}</p>
-        <p class="story-content">${story.content}</p>
-        <p class="story-author">Yazar: ${story.author}</p>
-    `;
+document.addEventListener('DOMContentLoaded', fetchStories);
 
-    storiesContainer.appendChild(storyElement); // Hikayeyi sayfaya ekliyoruz
-});
 // Menü simgesine tıklanınca menüyü aç
 document.getElementById('menuIcon').addEventListener('click', function () {
     document.getElementById('sideMenu').style.right = '0'; // Menü ekranın içine gelir
