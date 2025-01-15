@@ -1,5 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+require('dotenv').config();
+const dbHost = process.env.DB_HOST;
+const dbUser = process.env.DB_USER;
+const dbPass = process.env.DB_PASS;
+
+console.log(dbHost, dbUser, dbPass);  // Bu şekilde çevresel değişkenleri konsola yazdırabilirsiniz
+
 
 const app = express();
 app.use(cors());
