@@ -5,7 +5,7 @@ const admin = require('firebase-admin');
 const { getFirestore } = require('firebase-admin/firestore');
 
 // Firebase Admin SDK'yı başlatmak için servis hesabı anahtarını yükle
-const serviceAccount = require('./teksanbilcom-firebase-adminsdk-fbsvc-804d479fa3.json'); // Servis hesabı dosyanızın doğru yolu
+const serviceAccount = require('../teksanbilcom-firebase-adminsdk-fbsvc-804d479fa3.json'); // Servis hesabı dosyanızın doğru yolu
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

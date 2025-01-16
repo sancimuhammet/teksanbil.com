@@ -8,8 +8,8 @@
     <title>TekSanBil</title>
     <link rel="stylesheet" href="index.css">
     
-    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js"></script>
+    <script  src="https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js"></script>
 
 </head>
 <body>
@@ -47,27 +47,12 @@
     <div id="storiesContainer">
     
     </div>
-    
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js';
-        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js';
+    <script type="module" >
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
 
-        const firebaseConfig = {
-            apiKey: "AIzaSyB9thHStut4GHSsHkTkrK_Bd_t4N_sDWLI",
-            authDomain: "teksanbilcom.firebaseapp.com",
-            projectId: "teksanbilcom",
-            storageBucket: "teksanbilcom.firebasestorage.app",
-            messagingSenderId: "1000866577875",
-            appId: "1:1000866577875:web:49b2d0defb2646ee0fc326"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        console.log('Firebase uygulaması başlatıldı:', app);
-
-        console.log('Firebase uygulaması başlatıldı:', app);
     </script>
+    <script type="module" src="firebase-config.js"></script>
     <script type="module" src="menu.js"></script>
     <script type="module" src="index.js"></script>
     <script type="module" src="scroll.js"></script>
