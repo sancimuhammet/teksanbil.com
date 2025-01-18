@@ -3,6 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TekSanBil</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="module" src="firebaseauth.js"></script>
+    <script type="module" src="index.js"></script>
+    <link rel="stylesheet" href="story.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <div class="topbar">
+        <div class="wrapper target">
+            <div class="center">
+                <div class="title">TEKSANBİL</div>
+                <div class="subtitle">Teknoloji | Sanat | Bilim</div>
+            </div>
+            
+            <div class="right">
+                <span>
+                    <img src="img/user/user-1.jpg" alt="user">
+                </span>
+                <i class="fa fa-bars" id="menuIcon"></i>
+            </div>
+            
+            
+        </div>
+         
+        <div id="sideMenu" class="side-menu">
+            <i class="fa fa-times" id="closeMenu"></i>  Menü kapatma simgesi 
+            <ul>
+            <li><a href="index.html">Anasayfa</a></li>
+            <li><a href="about.html">Hakkında</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="login.html">Giriş Yap</a></li>
+            </ul>
+        </div>
+
+
+<div id="menuOverlay" class="menu-overlay"></div>
+    </div>
+        </div>
+
+    </div>
+    <div id="storiesContainer" ></div>
+
+    <!-- Firebase'i ES6 Modüllerle Kullanma -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-firestore.js";
+        // Firebase yapılandırması
+        const firebaseConfig = {
+        apiKey: "AIzaSyB9thHStut4GHSsHkTkrK_Bd_t4N_sDWLI",
+        authDomain: "teksanbilcom.firebaseapp.com",
+        projectId: "teksanbilcom",
+        storageBucket: "teksanbilcom.firebasestorage.app",
+        messagingSenderId: "1000866577875",
+        appId: "1:1000866577875:web:49b2d0defb2646ee0fc326"
+        };
+
+        // Firebase'i başlat
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);  // Firestore'u doğru başlat
+
+  // Import getDocs ve collection
+        
+
+        console.log("Firebase başlatıldı");
+
+    </script>
+
+    <script type="module" src="menu.js"></script>
+    <script type="module" src="scroll.js"></script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html> 
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>TekSanBil</title>
@@ -25,14 +105,14 @@
                 <span>
                     <img src="img/user/user-1.jpg" alt="user">
                 </span>
-                <i class="fa fa-bars" id="menuIcon"></i> <!-- Menü simgesi -->
+                <i class="fa fa-bars" id="menuIcon"></i>
             </div>
             
             
         </div>
-        <!-- Sağdan sola açılan menü -->
+        <!-- Sağdan sola açılan menü 
         <div id="sideMenu" class="side-menu">
-            <i class="fa fa-times" id="closeMenu"></i> <!-- Menü kapatma simgesi -->
+            <i class="fa fa-times" id="closeMenu"></i>  Menü kapatma simgesi 
             <ul>
             <li><a href="index.html">Anasayfa</a></li>
             <li><a href="about.html">Hakkında</a></li>
@@ -41,7 +121,7 @@
             </ul>
         </div>
 
-<!-- Menü dışında tıklamaları algılamak için bir overlay ekliyoruz -->
+<!-- Menü dışında tıklamaları algılamak için bir overlay ekliyoruz 
 <div id="menuOverlay" class="menu-overlay"></div>
     </div>
     <div id="storiesContainer">
@@ -59,4 +139,4 @@
     
 </body>
 
-</html>
+</html> -->

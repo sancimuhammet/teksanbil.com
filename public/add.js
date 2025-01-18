@@ -1,7 +1,6 @@
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
-const db = getFirestore();
-
+const db = getFirestore(); // Firestore'a bağlan
 const addStoryForm = document.getElementById('addStoryForm');
 
 addStoryForm.addEventListener('submit', async function(event) {
@@ -11,14 +10,20 @@ addStoryForm.addEventListener('submit', async function(event) {
     const content = document.getElementById('content').value;
     const author = document.getElementById('author').value;
 
-    const newStory = { title, content, author, date: new Date().toISOString() };
+    const newStory = { 
+        title: title, 
+        content: content, 
+        author: author, 
+        date: new Date().toISOString() 
+    };
 
     try {
+        // Firestore'a ekleme
         await addDoc(collection(db, "stories"), newStory);
         alert('Hikaye başarıyla eklendi!');
         window.location.href = 'index.html';
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error adding document:', error);
         alert('Hikaye eklenemedi, lütfen tekrar deneyin.');
     }
 });

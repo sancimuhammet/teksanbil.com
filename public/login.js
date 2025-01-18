@@ -1,25 +1,16 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Giriş formu üzerine tıklama dinleyicisi ekliyoruz
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Formun sayfayı yenilemesini engelle
+const signUpButton=document.getElementById('signUpButton');
+const signInButton=document.getElementById('signInButton');
+const signInForm=document.getElementById('signIn');
+const signUpForm=document.getElementById('signup');
 
-        // Kullanıcı adı ve şifreyi alıyoruz
-        const username = document.getElementById('user').value;
-        const password = document.getElementById('password').value;
-
-        // Sabit kullanıcı adı ve şifre
-        const validUsername = "admin"; // Burayı değiştirebilirsiniz
-        const validPassword = "1111"; // Burayı değiştirebilirsiniz
-
-        // Kullanıcı adı ve şifreyi kontrol et
-        if (username === validUsername && password === validPassword) {
-            alert("Giriş başarılı!");
-            window.location.href = 'add.html'; // Başarılı girişte yönlendirme
-        } else {
-            alert("Geçersiz kullanıcı adı veya şifre.");
-        }
-    });
-});
+signUpButton.addEventListener('click',function(){
+    signInForm.style.display="none";
+    signUpForm.style.display="block";
+})
+signInButton.addEventListener('click', function(){
+    signInForm.style.display="block";
+    signUpForm.style.display="none";
+})
 
 /*document.getElementById('loginForm').addEventListener('submit', async function (event) {
     event.preventDefault(); // Formun varsayılan davranışını engelliyoruz
