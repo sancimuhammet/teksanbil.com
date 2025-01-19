@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #32CD32, #FFA500); /* Yeşil ve Turuncu renk geçişi */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Yüksekliği tam ekran yapar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#errorContainer {
+    background-color: rgba(255, 255, 255, 0.8); /* Hafif beyaz arka plan */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#errorContainer h2 {
+    color: #D32F2F; /* Kırmızı renk */
+    font-size: 24px;
+}
+
+#errorContainer p {
+    color: #333;
+    font-size: 18px;
+}
+
+#errorContainer a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #FFA500; /* Turuncu */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#errorContainer a:hover {
+    background-color: #FF8C00; /* Hover efekti */
+}

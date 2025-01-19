@@ -75,7 +75,7 @@
 
     signInWithEmailAndPassword(auth, email,password)
     .then((userCredential)=>{
-        showMessage('login is successful', 'signInMessage');
+        showMessage('Hoşgeldin', 'signInMessage');
         const user=userCredential.user;
         localStorage.setItem('loggedInUserId', user.uid);
         window.location.href='add.html';
@@ -83,54 +83,14 @@
     .catch((error)=>{
         const errorCode=error.code;
         if(errorCode==='auth/invalid-credential'){
-            showMessage('Incorrect Email or Password', 'signInMessage');
+            showMessage('Hatalı Email veya Şifre.', 'signInMessage');
         }
         else{
-            showMessage('Account does not Exist', 'signInMessage');
+            showMessage('Kullanıcı bulunamadı', 'signInMessage');
         }
     })
  })
  
-addStoryForm.addEventListener('submit', async function(event) {
-    event.preventDefault();
 
-    const title = document.getElementById('title').value;
-    const content = document.getElementById('content').value;
-    const author = document.getElementById('author').value;
-
-    const newStory = { title, content, author, date: new Date().toISOString() };
-
-    try {
-        // Firestore koleksiyonuna yeni hikayeyi ekleme
-        await addDoc(collection(db, "stories"), newStory);
-        alert('Hikaye başarıyla eklendi!');
-        window.location.href = 'index.html';  // Sayfayı yenileyerek eklenen hikayeyi görün
-    } catch (error) {
-        console.error('Error:', error);  // Hata mesajını konsola yazdır
-        alert('Hikaye eklenemedi, lütfen tekrar deneyin.');
-    }
-});
  
  
- async function fetchStories() {
-     try {
-         const querySnapshot = await getDocs(collection(db, "stories"));
-         const storiesContainer = document.getElementById('storiesContainer');
-         storiesContainer.innerHTML = '';
- 
-         querySnapshot.forEach(doc => {
-             const story = doc.data();
-             const storyDiv = document.createElement('div');
-             storyDiv.classList.add('story');
-             storyDiv.innerHTML = `
-                 <h3>${story.title}</h3>
-                 <p>${story.content}</p>
-                 <p><em>Yazar: ${story.author}</em></p>
-                 <p><small>${story.date}</small></p>
-             `;
-             storiesContainer.appendChild(storyDiv);
-         });
-     } catch (error) {
-         console.error('Error:', error);
-     }
- }

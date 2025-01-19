@@ -1,4 +1,6 @@
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { getApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 
 const db = getFirestore(); // Firestore'a bağlan
 const addStoryForm = document.getElementById('addStoryForm');
@@ -27,3 +29,4 @@ addStoryForm.addEventListener('submit', async function(event) {
         alert('Hikaye eklenemedi, lütfen tekrar deneyin.');
     }
 });
+

@@ -11,6 +11,22 @@
       crossorigin="anonymous" referrerpolicy="no-referrer" />
    <title>Document</title>
    <script type="module" src="firebaseauth.js"></script>
+   <script type="module">
+      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+
+// Kullanıcı oturum açtı mı diye kontrol et
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        // Kullanıcı giriş yapmadıysa hata sayfasına yönlendir
+        window.location.href = 'error.html';  // Hata sayfanızın yolu
+    } else {
+        // Kullanıcı giriş yaptıysa sayfaya devam et
+        console.log('Kullanıcı Giriş Yaptı:', user.email);
+    }
+});
+
+   </script>
    
    <script type="module" src="add.js"></script>
    </head>
