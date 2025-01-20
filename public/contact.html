@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TekSanBil</title>
+    <link rel="stylesheet" href="index.css">
+    <script type="module" src="firebaseauth.js"></script>
+   
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <div class="topbar">
+        <div class="wrapper target">
+            <div class="center">
+                <div class="title">TEKSANBİL</div>
+                <div class="subtitle">Teknoloji | Sanat | Bilim</div>
+            </div>
+            
+            <div class="right">
+                <span>
+                    <img src="img/user/user-1.jpg" alt="user">
+                </span>
+                <i class="fa fa-bars" id="menuIcon" ></i>
+            </div>
+            
+            
+        </div>
+         
+        <div id="sideMenu" class="side-menu">
+            <i class="fa fa-times" id="closeMenu"></i> 
+            <ul>
+            <li><a href="index.html">Anasayfa</a></li>
+            <li><a href="about.html">Hakkında</a></li>
+            <li><a href="contact.html">İletişim</a></li>
+            <li><a href="login.html">Giriş Yap</a></li>
+            </ul>
+        </div>
+
+
+<div id="menuOverlay" class="menu-overlay"></div>
+    </div>
+        </div>
+
+    </div>
+    
+    <div id="contactContainer" class="contact-container">
+        <h2>İletişim</h2>
+        <p>
+            Bizimle iletişime geçmek için aşağıdaki formu kullanabilirsiniz. 
+            Sorularınızı, önerilerinizi ya da geri bildirimlerinizi bizlere ulaştırabilirsiniz. 
+            Her türlü geri bildirime değer veriyoruz!
+        </p>
+        
+        <form id="contactForm" class="contact-form">
+            <div class="form-group">
+                <label for="name">Adınız</label>
+                <input type="text" id="name" name="name" required placeholder="Adınızı girin">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-posta</label>
+                <input type="email" id="email" name="email" required placeholder="E-posta adresinizi girin">
+            </div>
+    
+            <div class="form-group">
+                <label for="message">Mesajınız</label>
+                <textarea id="message" name="message" required placeholder="Mesajınızı yazın"></textarea>
+            </div>
+    
+            <button type="submit" class="submit-btn">Gönder</button>
+        </form>
+    
+        <div class="footer">
+            <p>&copy; 2025 Teksanbil - Tüm hakları saklıdır.</p>
+        </div>
+    </div>
+    
+    <!-- Firebase Uygulama -->
+<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"></script>
+<!-- Firebase Auth -->
+<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"></script>
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"></script>
+
+<script>
+    // Sayfa yüklendikten sonra çalışacak kodu ekleyin
+    document.addEventListener("DOMContentLoaded", function() {
+        // Firebase yapılandırma bilgileri
+        const firebaseConfig = {
+            apiKey: "AIzaSyB9thHStut4GHSsHkTkrK_Bd_t4N_sDWLI",
+            authDomain: "teksanbilcom.firebaseapp.com",
+            projectId: "teksanbilcom",
+            storageBucket: "teksanbilcom.firebasestorage.app",
+            messagingSenderId: "1000866577875",
+            appId: "1:1000866577875:web:49b2d0defb2646ee0fc326"
+        };
+
+        // Firebase'i başlat
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Formu dinle
+        document.getElementById("contactForm").addEventListener("submit", async function(e) {
+            e.preventDefault(); // Formun varsayılan gönderimini engelle
+
+            // Form verilerini al
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            // Firebase'e veri gönderme
+            try {
+                const contactFormRef = db.collection("contactMessages").doc(); // Yeni bir belge oluşturuyoruz
+                await contactFormRef.set({
+                    name: name,
+                    email: email,
+                    message: message,
+                    date: new Date().toISOString() // Zaman damgası ekleyelim
+                });
+
+                alert("Mesajınız başarıyla gönderildi!");
+                
+                // Formu temizle
+                document.getElementById("contactForm").reset();
+            } catch (error) {
+                console.error("Mesaj gönderilirken hata oluştu:", error);
+                alert("Bir hata oluştu, lütfen tekrar deneyin.");
+            }
+        });
+    });
+</script>
+
+
+    <script type="module" src="menu.js"></script>
+    <script type="module" src="scroll.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+/* Genel stil ayarları */
+
+h1 {
+    font-size: 2.5em;
+    color: #4CAF50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Hikayeler Container */
+#storiesContainer {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hikaye stil */
+.story {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.story h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.story p {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.story em {
+    font-style: italic;
+    color: #888;
+}
+
+.story small {
+    font-size: 0.9em;
+    color: #bbb;
+}
+
+/* Yorumlar */
+.comment-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    resize: vertical;
+}
+
+.comment-section button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.comment-section button:hover {
+    background-color: #45a049;
+}
+
+/* Beğeni Butonu */
+button[id^="likeBtn-"] {
+    background-color: #ffffff; /* Arka planı beyaz yap */
+    color: #0078ff; /* Instagram ve Twitter mavi tonu */
+    padding: 12px;
+    border-radius: 50%; /* Yuvarlak buton */
+    border: 2px solid #0078ff;
+    cursor: pointer;
+    font-size: 1.3em; /* Daha küçük yazı boyutu */
+    transition: all 0.3s ease;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px; /* Dikey ve yatayda yuvarlak bir buton */
+    height: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
+}
+
+/* Hover Durumu (fare üzerine geldiğinde) */
+button[id^="likeBtn-"]:hover {
+    background-color: #0078ff; /* Hoverda mavi arka plan */
+    color: white;
+    border-color: #0078ff; /* Kenar rengi mavi */
+    transform: scale(1.1); /* Hoverda büyür */
+}
+
+/* Aktif (beğenildiğinde) durum */
+button[id^="likeBtn-"].active {
+    background-color: #ff4f4f; /* Kırmızı tonları aktif durumu için */
+    border-color: #ff4f4f;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover aktif durum */
+button[id^="likeBtn-"].active:hover {
+    background-color: #e33f3f; /* Hover aktif durumda daha koyu kırmızı */
+    border-color: #e33f3f;
+}
+
+/* Beğeni simgesi için ekstra stil */
+button[id^="likeBtn-"] .like-icon {
+    font-size: 1.5em; /* Simge boyutunu büyüt */
+}
+
+
+/* Yorumlar ve Beğeni sayısı */
+#commentsContainer {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: #f1f1f1;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.comment strong {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.comment p {
+    font-size: 1em;
+    color: #555;
+}
+
+.comment small {
+    font-size: 0.9em;
+    color: #888;
+}
+
+/* Butonlar */
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+/* Genel Arka Plan */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f0f4f7;
+}
+
+/* Responif Tasarım */
+@media (max-width: 768px) {
+    #storiesContainer {
+        width: 95%;
+    }
+
+    .story {
+        padding: 15px;
+    }
+
+    .comment-section button {
+        font-size: 1em;
+    }
+
+    button#likeBtn {
+        font-size: 1em;
+    }
+
+    .comment-section textarea {
+        font-size: 1em;
+    }
+}

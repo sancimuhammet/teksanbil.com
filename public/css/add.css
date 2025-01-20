@@ -39,7 +39,7 @@
  }
  
  .add form .text input:first-child {
-    font-family: 'Pacifico', cursive;
+    
  }
  
  .add form .text input:last-child {
@@ -50,7 +50,7 @@
  .add form .text textarea {
     height: 180px;
     padding: 10px 0px 0px 10px;
-    font-family: 'Arvo', serif;
+    
     font-size: 1rem;
  }
  
@@ -77,3 +77,20 @@
  .add form .button label{
     background-color: rgb(255, 231, 159);
  }
+ /* Sil Butonu */
+button.delete-btn {
+   background-color: #ff4f4f; /* Kırmızı renk */
+   color: white;
+   border: none;
+   cursor: pointer;
+   font-size: 1em;
+   margin-top: 10px;
+   padding: 8px 15px;
+   border-radius: 5px;
+   transition: background-color 0.3s ease;
+}
+
+/* Hover Durumu */
+button.delete-btn:hover {
+   background-color: #e33f3f;
+}

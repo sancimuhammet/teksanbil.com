@@ -28,5 +28,7 @@ addStoryForm.addEventListener('submit', async function(event) {
         console.error('Error adding document:', error);
         alert('Hikaye eklenemedi, lütfen tekrar deneyin.');
     }
+    
 });
+
 
