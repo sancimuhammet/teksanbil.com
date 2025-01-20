@@ -1,6 +1,6 @@
-@import '/public/css/default.css';
-@import '/public/css/fontFamily.css';
-@import '/public/css/topbar.css';
-@import '/public/css/story.css';
-@import '/public/css/about.css';
-@import '/public/css/contact.css';
+@import 'default.css';
+@import 'fontFamily.css';
+@import 'topbar.css';
+@import 'story.css';
+@import 'about.css';
+@import 'contact.css';
