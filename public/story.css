@@ -1,196 +1,101 @@
-/* Genel stil ayarları */
-
-h1 {
-    font-size: 2.5em;
-    color: #4CAF50;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Hikayeler Container */
+/* Hikayeler Konteyneri */
 #storiesContainer {
-    width: 90%;
-    max-width: 800px;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    flex: 9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* Hikaye stil */
+/* Hikaye Kartı */
 .story {
-    background-color: #ffffff;
+    width: calc(50% - 20px); /* Yarı genişlik */
+    border: 1px solid rgba(0, 0, 0, 0.3);
     padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin: 20px 0px;
+    height: min-content;
+    opacity: 1; /* Başlangıçta opak olacak şekilde ayarladık */
+    transform: translateX(0); /* Başlangıçta normal konumda */
+    transition: transform 0.5s, opacity 0.5s ease-out; /* Animasyon sadece bir kez */
 }
 
+/* Hikaye Başlığı */
 .story h3 {
+    font-family: 'Pacifico', cursive;
     font-size: 1.8em;
-    margin-bottom: 10px;
-    color: #333;
+    margin-bottom: 15px;
 }
 
+/* Hikaye Görseli */
+.story img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Hikaye Açıklaması */
 .story p {
-    font-size: 1.1em;
-    color: #555;
+    font-family: 'Arvo', serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    
+    -webkit-box-orient: vertical;
+    font-size: 1rem;
+    margin: 15px 0;
+    line-height: 22px;
 }
 
-.story em {
-    font-style: italic;
-    color: #888;
-}
-
-.story small {
-    font-size: 0.9em;
-    color: #bbb;
-}
-
-/* Yorumlar */
-.comment-section {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.comment-section textarea {
+/* Yazar ve Tarih */
+.story .authorAndDate {
     width: 100%;
-    padding: 10px;
     margin-top: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    resize: vertical;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
 }
 
-.comment-section button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease;
-}
-
-.comment-section button:hover {
-    background-color: #45a049;
-}
-
-/* Beğeni Butonu */
-button[id^="likeBtn-"] {
-    background-color: #ffffff; /* Arka planı beyaz yap */
-    color: #0078ff; /* Instagram ve Twitter mavi tonu */
-    padding: 12px;
-    border-radius: 50%; /* Yuvarlak buton */
-    border: 2px solid #0078ff;
-    cursor: pointer;
-    font-size: 1.3em; /* Daha küçük yazı boyutu */
-    transition: all 0.3s ease;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px; /* Dikey ve yatayda yuvarlak bir buton */
-    height: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hafif gölge */
-}
-
-/* Hover Durumu (fare üzerine geldiğinde) */
-button[id^="likeBtn-"]:hover {
-    background-color: #0078ff; /* Hoverda mavi arka plan */
-    color: white;
-    border-color: #0078ff; /* Kenar rengi mavi */
-    transform: scale(1.1); /* Hoverda büyür */
-}
-
-/* Aktif (beğenildiğinde) durum */
-button[id^="likeBtn-"].active {
-    background-color: #ff4f4f; /* Kırmızı tonları aktif durumu için */
-    border-color: #ff4f4f;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Hover aktif durum */
-button[id^="likeBtn-"].active:hover {
-    background-color: #e33f3f; /* Hover aktif durumda daha koyu kırmızı */
-    border-color: #e33f3f;
-}
-
-/* Beğeni simgesi için ekstra stil */
-button[id^="likeBtn-"] .like-icon {
-    font-size: 1.5em; /* Simge boyutunu büyüt */
-}
-
-
-/* Yorumlar ve Beğeni sayısı */
-#commentsContainer {
-    margin-top: 20px;
-}
-
-.comment {
-    background-color: #f1f1f1;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-.comment strong {
+.story .authorAndDate span {
+    font-family: 'Dancing Script', cursive;
     font-size: 1.2em;
-    color: #333;
+    font-weight: 700;
 }
 
-.comment p {
-    font-size: 1em;
-    color: #555;
+.story .authorAndDate span:nth-child(2) {
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: 700;
 }
 
-.comment small {
-    font-size: 0.9em;
-    color: #888;
-}
-
-/* Butonlar */
-button {
-    font-family: inherit;
-    font-size: inherit;
+/* Hikaye Etkileşimi - "Devamını Oku" */
+.story .read-more {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--primary-color);
+    font-weight: bold;
     cursor: pointer;
+    text-decoration: underline;
 }
 
-/* Genel Arka Plan */
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100vh;
-    background-color: #f0f4f7;
+/* Hikaye görünürlüğü - Scroll animasyonu */
+.story.active {
+    opacity: 1;
+    transform: translateX(0px); /* Hikayeler kaybolmaz ve sağa kaymaz */
 }
 
-/* Responif Tasarım */
-@media (max-width: 768px) {
-    #storiesContainer {
-        width: 95%;
-    }
-
+/* Responsive Tasarım */
+@media(max-width: 1100px) {
     .story {
-        padding: 15px;
+        width: 100%; /* Mobilde tek sütun */
     }
 
-    .comment-section button {
-        font-size: 1em;
+    .story:nth-child(2n) {
+        transition: all 0.5s; /* Mobilde animasyonu hızlı yap */
     }
-
-    button#likeBtn {
-        font-size: 1em;
-    }
-
-    .comment-section textarea {
-        font-size: 1em;
-    }
+}
+.story img {
+    width: 150px; /* Fotoğrafın genişliğini ayarlayın */
+    height: auto;
+    border-radius: 10px;
+    margin-left: 20px;
 }

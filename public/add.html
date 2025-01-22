@@ -68,15 +68,14 @@ onAuthStateChanged(auth, (user) => {
             <input type="text" id="title" placeholder="Your Title *" required>
             <textarea id="content" placeholder="Your Content *" required></textarea>
             <input type="text" id="author" placeholder="Your Name *" required>
+            <input type="text" id="imageUrl" placeholder="Resim URL" required>
         </div>
 
         <div class="button">
             <button type="submit">
-                <i class="fa-solid fa-plus"></i> Add Story
+                <i class="fa-solid fa-plus"></i> Hikayeyi ekle
             </button>
-            <label for="file">
-                <i class="fa-solid fa-image"></i>
-            </label>
+            
             <input type="file" id="file" style="display: none;"> 
         </div>
     </form>

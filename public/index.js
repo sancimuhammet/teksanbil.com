@@ -8,7 +8,7 @@ async function fetchStories() {
         const storiesCollection = collection(db, "stories");
         const querySnapshot = await getDocs(storiesCollection);
         const storiesContainer = document.getElementById('storiesContainer');
-        storiesContainer.innerHTML = '';
+        storiesContainer.innerHTML = ''; // Eski hikayeleri temizle
 
         querySnapshot.forEach(doc => {
             const story = doc.data();
@@ -16,37 +16,41 @@ async function fetchStories() {
             storyDiv.classList.add('story');
             storyDiv.innerHTML = `
                 <h3>${story.title}</h3>
-                <p>${story.content}</p>
+                <p>${story.content.substring(0, 150)}...</p> <!-- İlk kısmı göster -->
                 <p><em>Yazar: ${story.author}</em></p>
                 <p><small>${new Date(story.date).toLocaleDateString()}</small></p>
 
-                <!-- Yorum ekleme formu -->
-                <div class="comment-section" id="comment-section-${doc.id}">
-                    <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
-                    <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
+                <!-- Fotoğraf -->
+                <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
+
+                <!-- Devamını Oku butonu -->
+                <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
+
+                <!-- Tam hikaye, yorumlar ve beğeni butonu başlangıçta gizli olacak -->
+                <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
+                    <p class="full-content">${story.content}</p>
+                    <div class="comment-section" id="comment-section-${doc.id}">
+                        <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
+                        <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
+                    </div>
+                    <button id="likeBtn-${doc.id}"><i class="fa fa-thumbs-up"></i> Beğen</button>
+                    <div id="commentsContainer-${doc.id}"></div>
                 </div>
-
-                <!-- Beğeni butonu -->
-                <button id="likeBtn-${doc.id}"><i class="fa fa-thumbs-up"></i></button>
-
-                <div id="commentsContainer-${doc.id}"></div>
             `;
             storiesContainer.appendChild(storyDiv);
 
-            // Yorumları yükle
-            loadComments(doc.id);
+            // "Devamını Oku" butonuna event listener ekle
+            document.getElementById(`readMoreBtn-${doc.id}`).addEventListener('click', function() {
+                const fullStoryDiv = document.getElementById(`fullStory-${doc.id}`);
+                const readMoreBtn = document.getElementById(`readMoreBtn-${doc.id}`);
 
-            // Beğeni sayısını yükle
-            loadLikes(doc.id);
-
-            // Yorum ekleme butonuna event listener ekle
-            document.getElementById(`addCommentBtn-${doc.id}`).addEventListener('click', function() {
-                addComment(doc.id);
-            });
-
-            // Beğeni butonuna event listener ekle
-            document.getElementById(`likeBtn-${doc.id}`).addEventListener('click', function() {
-                toggleLike(doc.id);
+                if (fullStoryDiv.style.display === 'none') {
+                    fullStoryDiv.style.display = 'block';
+                    readMoreBtn.innerText = 'Devamını Gizle';
+                } else {
+                    fullStoryDiv.style.display = 'none';
+                    readMoreBtn.innerText = 'Devamını Oku';
+                }
             });
         });
     } catch (error) {
@@ -54,6 +58,8 @@ async function fetchStories() {
         alert('Hikayeler yüklenemedi, lütfen tekrar deneyin.');
     }
 }
+
+
 
 // Yorumları yükleme
 async function loadComments(storyId) {
