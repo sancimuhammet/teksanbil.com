@@ -14,26 +14,36 @@ async function fetchStories() {
             const story = doc.data();
             const storyDiv = document.createElement('div');
             storyDiv.classList.add('story');
+            
+            // Hikayenin ilk 150 karakterini ve geri kalan kısmını ayır
+            const contentPreview = story.content.substring(0, 150);
+            const fullContent = story.content.substring(150);
+
             storyDiv.innerHTML = `
-                <h3>${story.title}</h3>
-                <p>${story.content.substring(0, 150)}...</p> <!-- İlk kısmı göster -->
-                <p><em>Yazar: ${story.author}</em></p>
-                <p><small>${new Date(story.date).toLocaleDateString()}</small></p>
+                <div class="story-header">
+                    <h3>${story.title}</h3>
+                    <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date).toLocaleDateString()}</small></p>
+                </div>
 
                 <!-- Fotoğraf -->
                 <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
+
+                <!-- Hikaye özeti -->
+                <p>${contentPreview}...</p> <!-- İlk kısmı göster -->
 
                 <!-- Devamını Oku butonu -->
                 <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
 
                 <!-- Tam hikaye, yorumlar ve beğeni butonu başlangıçta gizli olacak -->
                 <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
-                    <p class="full-content">${story.content}</p>
+                    <p class="full-content">${fullContent}</p> <!-- Kalan kısmı burada gizle -->
+                    <button id="readLessBtn-${doc.id}">Devamını Gizle</button> <!-- Devamını gizle butonu -->
+
+                    <!-- Yorum kısmı -->
                     <div class="comment-section" id="comment-section-${doc.id}">
                         <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
                         <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
                     </div>
-                    <button id="likeBtn-${doc.id}"><i class="fa fa-thumbs-up"></i> Beğen</button>
                     <div id="commentsContainer-${doc.id}"></div>
                 </div>
             `;
@@ -43,14 +53,22 @@ async function fetchStories() {
             document.getElementById(`readMoreBtn-${doc.id}`).addEventListener('click', function() {
                 const fullStoryDiv = document.getElementById(`fullStory-${doc.id}`);
                 const readMoreBtn = document.getElementById(`readMoreBtn-${doc.id}`);
+                const readLessBtn = document.getElementById(`readLessBtn-${doc.id}`);
 
-                if (fullStoryDiv.style.display === 'none') {
-                    fullStoryDiv.style.display = 'block';
-                    readMoreBtn.innerText = 'Devamını Gizle';
-                } else {
-                    fullStoryDiv.style.display = 'none';
-                    readMoreBtn.innerText = 'Devamını Oku';
-                }
+                fullStoryDiv.style.display = 'block';
+                readMoreBtn.style.display = 'none'; // "Devamını Oku" butonunu gizle
+                readLessBtn.style.display = 'block'; // "Devamını Gizle" butonunu göster
+            });
+
+            // "Devamını Gizle" butonuna event listener ekle
+            document.getElementById(`readLessBtn-${doc.id}`).addEventListener('click', function() {
+                const fullStoryDiv = document.getElementById(`fullStory-${doc.id}`);
+                const readMoreBtn = document.getElementById(`readMoreBtn-${doc.id}`);
+                const readLessBtn = document.getElementById(`readLessBtn-${doc.id}`);
+
+                fullStoryDiv.style.display = 'none';
+                readMoreBtn.style.display = 'block'; // "Devamını Oku" butonunu göster
+                readLessBtn.style.display = 'none'; // "Devamını Gizle" butonunu gizle
             });
         });
     } catch (error) {

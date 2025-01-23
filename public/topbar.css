@@ -1,34 +1,36 @@
 .center {
     text-align: center; /* Ortalama */
-    margin-top: 10px; /* Üst boşluk */
+    margin-top: 20px; /* Üst boşluk */
+    margin-bottom: 0px; /* Alt boşluk */
 }
 
 .center .title {
     font-size: 36px; /* TEKSANBİL yazısının boyutu */
     font-weight: bold; /* Kalın yazı */
-    color: #333; /* Yazı rengi */
+    color: #ffffff; /* Yazı rengi */
     display: inline-block; /* İçeriği hizalamak için */
     padding: 0 20px; /* Alt yazı genişliği ile hizalamayı kolaylaştırır */
-    border-bottom: 2px solid #555; /* Görsel estetik için alt çizgi */
+    border-bottom: 2px solid #ffffff; /* Görsel estetik için alt çizgi */
 }
 
 .center .subtitle {
     font-size: 16px; /* Alt yazı boyutu */
-    color: #555; /* Alt yazı rengi */
+    color: #8a8585; /* Alt yazı rengi */
     margin-top: 5px; /* Başlık ile alt yazı arasındaki boşluk */
     display: inline-block; /* Genişlik ve hizalamayı aynı yapmak için */
     width: fit-content; /* Yazı uzunluğunu kapsar */
     padding: 0 20px; /* Başlıkla aynı genişlik */
+    margin-bottom: 5px; /* Diğer başlıklarla arasındaki boşluğu eşitle */
 }
 
 .topbar{
     width: 100%;
-    height: 50px;
+    height: 80px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     font-family: 'Josefin Sans', sans-serif;
-    background-color: #fff;
+    background-color: #0f0f0f;
 }
 .topbar .wrapper{
     width: 100%;
@@ -42,6 +44,8 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    color: #ffffff;
+    margin-top: 15px;
 }
 .topbar .left i{
     font-size: 1.5em;
@@ -52,31 +56,6 @@
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-}
-.topbar .right span img{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-.topbar .right .searchEngine{
-    width: 70%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-.topbar .right .searchEngine i{
-    position: absolute;
-    right: 0px;
-    background-color: orange;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    cursor: pointer;
 }
 
 /* Scroll animasyonu */
@@ -155,7 +134,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(197, 196, 196, 0.5);
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;

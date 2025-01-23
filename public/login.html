@@ -3,12 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register & Login</title>
+    <title>Giriş</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="log.css">
+    <link rel="stylesheet" href="index.css">
     <script type="module" src="firebaseauth.js"></script>
 </head>
 <body>
+  <div class="topbar">
+    <div class="wrapper target">
+        <div class="center">
+            <div class="title">TEKSANBİL</div>
+            <div class="subtitle">Teknoloji | Sanat | Bilim</div>
+        </div>
+        
+        <div class="right">
+            
+            <i class="fa fa-bars" id="menuIcon" ></i>
+        </div>
+        
+        
+    </div>
+     
+    <div id="sideMenu" class="side-menu">
+        <i class="fa fa-times" id="closeMenu"></i> 
+        <ul>
+        <li><a href="index.html">Anasayfa</a></li>
+        <li><a href="about.html">Hakkında</a></li>
+        <li><a href="contact.html">İletişim</a></li>
+        <li><a href="login.html">Giriş Yap</a></li>
+        </ul>
+    </div>
+
+
+
+  <div id="menuOverlay" class="menu-overlay"></div>
     <div class="container" id="signup" style="display:none;">
       <h1 class="form-title">Register</h1>
       <form method="post" action="">
@@ -82,5 +111,7 @@
         </div>-->
       </div>
       <script src="login.js"></script>
+      <script type="module" src="menu.js"></script>
+      <script src="scroll.js"></script>
 </body>
 </html>

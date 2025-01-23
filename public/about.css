@@ -1,34 +1,64 @@
-/* Genel container stil */
+/* Topbar ile altındaki container arasına boşluk eklemek */
 .about-container {
-    background-color: #f9f9f9;
+    background-color: #ffffff; /* Beyaz arka plan */
+    border: 1px solid rgba(0, 0, 0, 0.3); /* Hafif çerçeve */
+    border-radius: 12px;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 40px auto; /* Topbar ile container arasında boşluk (üstteki artırıldı) */
+    font-family: 'Arial', sans-serif;
+    box-shadow: none;
     max-width: 800px;
-    margin: 20px auto;
-    font-family: Arial, sans-serif;
 }
 
-/* Başlık stil */
+/* Genel tasarım düzenlemeleri */
 .about-container h2 {
-    font-size: 2rem;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
+    font-size: 1.8rem; /* Başlık boyutu */
+    color: #000; /* Siyah renk */
+    text-align: left;
+    margin-bottom: 15px;
+    font-weight: bold;
 }
 
-/* Paragraf stil */
-.about-container p {
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Resim ve yazı arasında boşluk */
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 200px; /* Resim sınır boyutu */
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    margin: 0 auto; /* Ortalamak için */
+    display: block;
+}
+
+.about-text {
     font-size: 1rem;
     line-height: 1.6;
-    color: #555;
-    margin-bottom: 15px;
+    color: #333;
+    text-align: justify;
 }
 
-/* Footer stil */
-.about-container .footer {
-    text-align: center;
-    font-size: 0.8rem;
-    color: #888;
-    margin-top: 20px;
+/* Responsive düzenleme */
+@media screen and (min-width: 600px) {
+    .about-content {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .about-image img {
+        margin: 0;
+    }
+
+    .about-text {
+        flex: 1;
+        padding-left: 20px; /* Daha fazla okuma kolaylığı için boşluk */
+    }
+}
+
+/* Topbar ile alt içerik arasına genel boşluk eklemek */
+.topbar + .about-container {
+    margin-top: 60px; /* Ekstra boşluk */
 }

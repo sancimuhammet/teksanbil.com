@@ -3,6 +3,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-aut
 import { getApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 
 const db = getFirestore(); // Firestore'a bağlan
+
 const addStoryForm = document.getElementById('addStoryForm');
 
 addStoryForm.addEventListener('submit', async function(event) {
@@ -11,13 +12,13 @@ addStoryForm.addEventListener('submit', async function(event) {
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
     const author = document.getElementById('author').value;
-    const imageUrl = document.getElementById('imageUrl')
+    const imageUrl = document.getElementById('imageUrl').value; // Burada imageUrl sadece bir bağlantı (URL) olacak
     const newStory = { 
         title: title, 
         content: content, 
         author: author, 
-        imageUrl: imageUrl,
-        date: new Date().toISOString() 
+        date: new Date().toISOString(),
+        imageUrl: imageUrl // Kullanıcı tarafından girilen bağlantıyı Firestore'a ekle
     };
 
     try {
@@ -29,7 +30,4 @@ addStoryForm.addEventListener('submit', async function(event) {
         console.error('Error adding document:', error);
         alert('Hikaye eklenemedi, lütfen tekrar deneyin.');
     }
-    
 });
-
-
