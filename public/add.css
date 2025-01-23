@@ -1,115 +1,160 @@
+/* Genel body stili */
+body {
+   font-family: Arial, sans-serif;
+   background:linear-gradient(to right,#bcdf94,#e65a5a);   margin: 0;
+   padding: 0;
+   color: #fff;
+}
+
+/* .add container'ı stilini ayarlıyoruz */
 .add {
    width: 100%;
-   height: calc(100vh - 50px); /* Üst barın yüksekliği dikkate alındı */
+   height: calc(100vh - 50px);
    display: flex;
    justify-content: center;
-   align-items: center;
-   padding: 20px 0; /* Üst ve alt boşluk ekledim */
-   flex-direction: column;
-}
-
-.form-title {
-   font-size: 2rem; /* Başlık boyutu */
-   font-weight: bold; /* Kalın yazı */
-   color: #333; /* Başlık rengi */
-   margin-bottom: 20px; /* Başlık ile form arasındaki boşluk */
-   text-align: center; /* Ortalanmış başlık */
-}
-
-.add form {
-   background-color: rgba(0, 0, 0, 0.1);
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   height: 450px;
-   width: 90%;
-   max-width: 1000px;
+   align-items: flex-start;
    padding: 20px;
-   border-radius: 10px;
-   border: 1px solid rgba(0, 0, 0, 0.3);
+   flex-direction: column;
 }
 
-.add form .text {
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   width: 100%;
+/* Form başlığını sade ve şık yapmak */
+.form-title {
+   font-size: 2.5rem;
+   font-weight: bolder;
    margin-bottom: 20px;
+   text-align: center;
+   
+   border-radius: 3px;
+   color: #000000;
+}
+
+/* Form stili */
+.add form {
+   background-color: rgba(0, 0, 0, 0.9); /* Daha açık renk */
+   padding: 30px;
+   border-radius: 8px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   margin-bottom: 40px; /* Alt boşluk ekleyerek ayırıyoruz */
 }
 
 .add form .text input,
 .add form .text textarea {
    width: 100%;
-   outline: none;
+   padding: 10px;
+   border-radius: 5px;
    border: none;
-   border-radius: 10px;
-   margin-bottom: 15px;
-}
-
-.add form .text input {
-   height: 40px;
-   padding: 0px 0px 0px 10px;
+   background:linear-gradient(to right,#c5c3c3,#161616);   margin: 0;
+   color: white;
    font-size: 1.1rem;
-}
-
-.add form .text input:first-child {
-   margin-top: 0;
-}
-
-.add form .text input:last-child {
-   font-family: 'Dancing Script', cursive;
-   font-weight: 700;
+   margin-bottom: 15px;
 }
 
 .add form .text textarea {
    height: 180px;
-   padding: 10px 0px 0px 10px;
-   font-size: 1rem;
+   resize: none;
 }
 
-.add form .button {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 100%;
-   margin-top: 10px;
-}
-
-.add form .button button, .add form .button label {
-   width: 100%;
-   height: 50px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color: lightgreen;
-   border: none;
-   outline: none;
-   border-radius: 5px;
-   font-size: 1.1rem;
-   cursor: pointer;
-   margin-bottom: 10px;
-}
-
-.add form .button label {
-   background-color: rgb(255, 231, 159);
-}
-
+/* Form butonları */
 .add form .button button {
    background-color: #4CAF50;
+   color: rgb(255, 255, 255);
+   border: none;
+   padding: 12px 20px;
+   font-size: 1rem;
+   cursor: pointer;
+   border-radius: 5px;
+   transition: background-color 0.3s;
 }
 
-button.delete-btn {
-   background-color: #ff4f4f;
+.add form .button button:hover {
+   background-color: #45a049;
+}
+
+/* Başlıklar ve silme butonları */
+.story-list-container {
+   background-color: rgba(0, 0, 0, 0.6); /* Koyu renk */
+   padding: 20px;
+   border-radius: 8px;
+}
+
+.story-item {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: rgba(0, 0, 0, 0.5);
+   padding: 15px;
+   border-radius: 5px;
+   margin-bottom: 10px;
+   color: #000000;
+   font-size: 1.1rem;
+}
+
+.story-item h3 {
+   margin: 0;
+   font-size: 1.8rem;
+}
+
+/* Silme butonları sağa hizalanmış */
+.story-item button.delete-btn {
+   background-color: #eb1212;
+   padding: 8px 15px;
+   border-radius: 5px;
    color: white;
    border: none;
    cursor: pointer;
-   font-size: 1em;
-   margin-top: 10px;
-   padding: 8px 15px;
-   border-radius: 5px;
+   font-size: 0.9rem;
    transition: background-color 0.3s ease;
 }
 
-button.delete-btn:hover {
-   background-color: #e33f3f;
+.story-item button.delete-btn:hover {
+   background-color: #cec0c0;
+}
+
+/* Tablo stilini sadeleştiriyoruz */
+.story-table {
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 30px;
+}
+
+.story-table th,
+.story-table td {
+   padding: 15px;
+   text-align: left;
+   border: 1px solid #ccc;
+   color: #fff;
+}
+
+.story-table th {
+   background-color: #333;
+   font-weight: bold;
+}
+
+.story-table tr:nth-child(even) {
+   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.story-table tr:hover {
+   background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer kısmı */
+footer {
+   background-color: rgba(0, 0, 0, 0.7);
+   color: white;
+   text-align: center;
+   padding: 15px;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+}
+/* Hikayeler başlığı stil */
+.add h3 {
+   
+   color: #030303; /* Koyu gri renk */
+   
+   text-align: center; /* Başlığı ortala */
+  
+   
+   
 }

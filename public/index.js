@@ -1,12 +1,15 @@
-import { getFirestore, collection, getDocs, addDoc, doc, getDoc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 // Firestore'a bağlan
 const db = getFirestore();
 
 async function fetchStories() {
     try {
+        // Firestore'dan hikayeleri sıralı çekme
         const storiesCollection = collection(db, "stories");
-        const querySnapshot = await getDocs(storiesCollection);
+        const q = query(storiesCollection, orderBy("date", "desc")); // "date" alanına göre azalan sırayla sıralama
+        const querySnapshot = await getDocs(q);
+        
         const storiesContainer = document.getElementById('storiesContainer');
         storiesContainer.innerHTML = ''; // Eski hikayeleri temizle
 
@@ -22,7 +25,7 @@ async function fetchStories() {
             storyDiv.innerHTML = `
                 <div class="story-header">
                     <h3>${story.title}</h3>
-                    <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date).toLocaleDateString()}</small></p>
+                    <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date.seconds * 1000).toLocaleDateString()}</small></p>
                 </div>
 
                 <!-- Fotoğraf -->
@@ -76,7 +79,6 @@ async function fetchStories() {
         alert('Hikayeler yüklenemedi, lütfen tekrar deneyin.');
     }
 }
-
 
 
 // Yorumları yükleme
