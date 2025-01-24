@@ -43,8 +43,7 @@ body {
    padding: 10px;
    border-radius: 5px;
    border: none;
-   background:linear-gradient(to right,#c5c3c3,#161616);   margin: 0;
-   color: white;
+   color: rgb(0, 0, 0);
    font-size: 1.1rem;
    margin-bottom: 15px;
 }
@@ -152,8 +151,6 @@ footer {
 .add h3 {
    
    color: #030303; /* Koyu gri renk */
-   
-   text-align: center; /* Başlığı ortala */
   
    
    

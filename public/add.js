@@ -45,7 +45,7 @@ async function loadStories() {
         const story = docSnapshot.data();
         const storyTitle = story.title;
         const storyId = docSnapshot.id;
-
+        
         // Liste elemanı oluştur
         const storyDiv = document.createElement('div');
         storyDiv.classList.add('story-item');
@@ -59,6 +59,16 @@ async function loadStories() {
         // Silme butonuna event listener ekle
         document.getElementById(`deleteBtn-${storyId}`).addEventListener('click', async () => {
             try {
+                const confirmDelete = confirm("Emin misiniz? Bu hikaye silinecek!");
+
+                if (confirmDelete) {
+                // Silme işlemi burada yapılacak
+                    console.log("Hikaye silindi.");
+                    } else {
+                    // Silme işlemi iptal edilecek
+                    console.log("Silme işlemi iptal edildi.");
+                    }
+
                 // Belgeyi Firestore'dan sil
                 const storyRef = doc(db, "stories", storyId); // Burada storyId ile doğru belgeyi referans alıyoruz
                 await deleteDoc(storyRef); // Silme işlemi

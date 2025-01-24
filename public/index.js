@@ -5,11 +5,10 @@ const db = getFirestore();
 
 async function fetchStories() {
     try {
-        // Firestore'dan hikayeleri sıralı çekme
         const storiesCollection = collection(db, "stories");
-        const q = query(storiesCollection, orderBy("date", "desc")); // "date" alanına göre azalan sırayla sıralama
+        const q = query(storiesCollection, orderBy("date", "desc"));
         const querySnapshot = await getDocs(q);
-        
+
         const storiesContainer = document.getElementById('storiesContainer');
         storiesContainer.innerHTML = ''; // Eski hikayeleri temizle
 
@@ -17,8 +16,7 @@ async function fetchStories() {
             const story = doc.data();
             const storyDiv = document.createElement('div');
             storyDiv.classList.add('story');
-            
-            // Hikayenin ilk 150 karakterini ve geri kalan kısmını ayır
+
             const contentPreview = story.content.substring(0, 150);
             const fullContent = story.content.substring(150);
 
@@ -28,21 +26,18 @@ async function fetchStories() {
                     <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date.seconds * 1000).toLocaleDateString()}</small></p>
                 </div>
 
-                <!-- Fotoğraf -->
                 <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
 
-                <!-- Hikaye özeti -->
                 <p>${contentPreview}...</p> <!-- İlk kısmı göster -->
 
-                <!-- Devamını Oku butonu -->
                 <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
 
-                <!-- Tam hikaye, yorumlar ve beğeni butonu başlangıçta gizli olacak -->
                 <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
-                    <p class="full-content">${fullContent}</p> <!-- Kalan kısmı burada gizle -->
-                    <button id="readLessBtn-${doc.id}">Devamını Gizle</button> <!-- Devamını gizle butonu -->
+                    <p class="full-content">${fullContent}</p>
+<button id="readLessBtn-${doc.id}" style="background-color: #ff4f4f; color: white; padding: 8px 15px; border-radius: 5px; font-size: 0.8em; border: none; cursor: pointer;">
+    Devamını Gizle
+</button>
 
-                    <!-- Yorum kısmı -->
                     <div class="comment-section" id="comment-section-${doc.id}">
                         <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
                         <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
@@ -52,28 +47,33 @@ async function fetchStories() {
             `;
             storiesContainer.appendChild(storyDiv);
 
-            // "Devamını Oku" butonuna event listener ekle
             document.getElementById(`readMoreBtn-${doc.id}`).addEventListener('click', function() {
                 const fullStoryDiv = document.getElementById(`fullStory-${doc.id}`);
                 const readMoreBtn = document.getElementById(`readMoreBtn-${doc.id}`);
                 const readLessBtn = document.getElementById(`readLessBtn-${doc.id}`);
-
+            
+                readMoreBtn.style.display = 'none';
+                // "Devamını Gizle" butonunu gizle
+                readLessBtn.style.display = 'block';
+                // Hikayenin tamamını gizle
                 fullStoryDiv.style.display = 'block';
-                readMoreBtn.style.display = 'none'; // "Devamını Oku" butonunu gizle
-                readLessBtn.style.display = 'block'; // "Devamını Gizle" butonunu göster
             });
-
+            
             // "Devamını Gizle" butonuna event listener ekle
             document.getElementById(`readLessBtn-${doc.id}`).addEventListener('click', function() {
                 const fullStoryDiv = document.getElementById(`fullStory-${doc.id}`);
                 const readMoreBtn = document.getElementById(`readMoreBtn-${doc.id}`);
                 const readLessBtn = document.getElementById(`readLessBtn-${doc.id}`);
-
+            
+                // "Devamını Oku" butonunu göster
+                readMoreBtn.style.display = 'inline-block';
+                // "Devamını Gizle" butonunu gizle
+                readLessBtn.style.display = 'none';
+                // Hikayenin tamamını gizle
                 fullStoryDiv.style.display = 'none';
-                readMoreBtn.style.display = 'block'; // "Devamını Oku" butonunu göster
-                readLessBtn.style.display = 'none'; // "Devamını Gizle" butonunu gizle
             });
         });
+
     } catch (error) {
         console.error('Error fetching stories:', error);
         alert('Hikayeler yüklenemedi, lütfen tekrar deneyin.');
