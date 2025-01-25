@@ -14,13 +14,15 @@ addStoryForm.addEventListener('submit', async function(event) {
     const author = document.getElementById('author').value;
     const imageUrl = document.getElementById('imageUrl').value;
 
+    const formattedContent = content.replace(/\n/g, '\\n'); // Satır başlarını koru
     const newStory = { 
-        title: title, 
-        content: content, 
-        author: author, 
-        date: serverTimestamp(), 
-        imageUrl: imageUrl 
+    title: title, 
+    content: formattedContent, 
+    author: author, 
+    date: serverTimestamp(), 
+    imageUrl: imageUrl 
     };
+
 
     try {
         // Firestore'a hikaye ekleme

@@ -17,76 +17,72 @@ async function fetchStories() {
             const storyDiv = document.createElement('div');
             storyDiv.classList.add('story');
 
-            const maxLength = 150;
+            const maxLength = 350;
             let content = story.content;
-            
+
             let contentPreview = content.substring(0, maxLength);
             let remainder = content.substring(maxLength);
-            
+
             // Eğer kesilen içerik kelimenin ortasındaysa, tamamlanmış bir kelimeye kadar devam et.
             if (remainder.length > 0) {
-              const nextSpaceIndex = remainder.indexOf(' ');
-              if (nextSpaceIndex !== -1) {
-                contentPreview += remainder.substring(0, nextSpaceIndex);
-                remainder = remainder.substring(nextSpaceIndex);
-              }
+                const nextSpaceIndex = remainder.indexOf(' ');
+                if (nextSpaceIndex !== -1) {
+                    contentPreview += remainder.substring(0, nextSpaceIndex);
+                    remainder = remainder.substring(nextSpaceIndex);
+                }
             }
-            
+
             const fullContent = remainder;
+
             storyDiv.innerHTML = `
-    <div class="story-header">
-        <h3>${story.title}</h3>
-        <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date.seconds * 1000).toLocaleDateString()}</small></p>
-            </div>
+                <div class="story-header">
+                    <h3>${story.title}</h3>
+                    <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date.seconds * 1000).toLocaleDateString()}</small></p>
+                </div>
 
-            <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
+                <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
 
-            <div class="story-content">
-        <p>${contentPreview}</p> <!-- İlk kısmı göster -->
-            </div>
+                <div class="story-content">
+                    <p>${contentPreview}</p>
+                </div>
 
-            <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
+                <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
     
-             <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
-            <p class="full-content">${fullContent}</p>
-            <button id="readLessBtn-${doc.id}" style="background-color: #ff4f4f; color: white; padding: 8px 15px; border-radius: 5px; font-size: 0.8em; border: none; cursor: pointer;">Devamını Gizle</button>
-            <div class="comment-section" id="comment-section-${doc.id}">
-            <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
-            <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
-        </div>
-        <div id="commentsContainer-${doc.id}"></div>
-        </div>
-    `;
+                <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
+                    <p class="full-content">${fullContent}</p>
+                    <button id="readLessBtn-${doc.id}" style="background-color: #ff4f4f; color: white; padding: 8px 15px; border-radius: 5px; font-size: 0.8em; border: none; cursor: pointer;">Devamını Gizle</button>
+                    <div class="comment-section" id="comment-section-${doc.id}">
+                        <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
+                        <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
+                    </div>
+                    <div id="commentsContainer-${doc.id}"></div>
+                </div>
+            `;
 
             storiesContainer.appendChild(storyDiv);
 
-            document.getElementById(`readMoreBtn-${doc.id}`).addEventListener('click', function() {
+            // "Devamını Oku" butonuna event listener ekle
+            document.getElementById(`readMoreBtn-${doc.id}`).addEventListener('click', function () {
                 const fullStoryDiv = document.getElementById(`fullStory-${doc.id}`);
                 const readMoreBtn = document.getElementById(`readMoreBtn-${doc.id}`);
                 const readLessBtn = document.getElementById(`readLessBtn-${doc.id}`);
-            
+
                 readMoreBtn.style.display = 'none';
-                // "Devamını Gizle" butonunu gizle
                 readLessBtn.style.display = 'block';
-                // Hikayenin tamamını gizle
                 fullStoryDiv.style.display = 'block';
             });
-            
+
             // "Devamını Gizle" butonuna event listener ekle
-            document.getElementById(`readLessBtn-${doc.id}`).addEventListener('click', function() {
+            document.getElementById(`readLessBtn-${doc.id}`).addEventListener('click', function () {
                 const fullStoryDiv = document.getElementById(`fullStory-${doc.id}`);
                 const readMoreBtn = document.getElementById(`readMoreBtn-${doc.id}`);
                 const readLessBtn = document.getElementById(`readLessBtn-${doc.id}`);
-            
-                // "Devamını Oku" butonunu göster
+
                 readMoreBtn.style.display = 'inline-block';
-                // "Devamını Gizle" butonunu gizle
                 readLessBtn.style.display = 'none';
-                // Hikayenin tamamını gizle
                 fullStoryDiv.style.display = 'none';
             });
         });
-
     } catch (error) {
         console.error('Error fetching stories:', error);
         alert('Hikayeler yüklenemedi, lütfen tekrar deneyin.');
