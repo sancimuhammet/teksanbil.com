@@ -60,25 +60,23 @@ async function loadStories() {
         document.getElementById(`deleteBtn-${storyId}`).addEventListener('click', async () => {
             try {
                 const confirmDelete = confirm("Emin misiniz? Bu hikaye silinecek!");
-
+        
                 if (confirmDelete) {
-                // Silme işlemi burada yapılacak
-                    console.log("Hikaye silindi.");
-                    } else {
-                    // Silme işlemi iptal edilecek
+                    // Silme işlemi yalnızca onaylandıysa yapılacak
+                    const storyRef = doc(db, "stories", storyId); // Firestore'dan silinecek hikaye referansı
+                    await deleteDoc(storyRef); // Silme işlemi
+                    alert('Hikaye başarıyla silindi!');
+                    loadStories(); // Hikayeleri tekrar yükle
+                } else {
+                    // Silme işlemi iptal edildi
                     console.log("Silme işlemi iptal edildi.");
-                    }
-
-                // Belgeyi Firestore'dan sil
-                const storyRef = doc(db, "stories", storyId); // Burada storyId ile doğru belgeyi referans alıyoruz
-                await deleteDoc(storyRef); // Silme işlemi
-                alert('Hikaye başarıyla silindi!');
-                loadStories(); // Hikayeler tekrar yüklenecek
+                }
             } catch (error) {
                 console.error('Hikaye silinirken hata:', error);
                 alert('Hikaye silinemedi, lütfen tekrar deneyin.');
             }
         });
+        
     });
 }
 

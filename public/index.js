@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, query, orderBy, doc, getDoc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
 
 // Firestore'a bağlan
 const db = getFirestore();
@@ -21,30 +21,30 @@ async function fetchStories() {
             const fullContent = story.content.substring(150);
 
             storyDiv.innerHTML = `
-                <div class="story-header">
-                    <h3>${story.title}</h3>
-                    <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date.seconds * 1000).toLocaleDateString()}</small></p>
-                </div>
+    <div class="story-header">
+        <h3>${story.title}</h3>
+        <p><em>Yazar: ${story.author}</em> | <small>${new Date(story.date.seconds * 1000).toLocaleDateString()}</small></p>
+            </div>
 
-                <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
+            <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
 
-                <p>${contentPreview}...</p> <!-- İlk kısmı göster -->
+            <div class="story-content">
+        <p>${contentPreview}...</p> <!-- İlk kısmı göster -->
+            </div>
 
-                <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
+            <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
+    
+             <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
+            <p class="full-content">${fullContent}</p>
+            <button id="readLessBtn-${doc.id}" style="background-color: #ff4f4f; color: white; padding: 8px 15px; border-radius: 5px; font-size: 0.8em; border: none; cursor: pointer;">Devamını Gizle</button>
+            <div class="comment-section" id="comment-section-${doc.id}">
+            <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
+            <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
+        </div>
+        <div id="commentsContainer-${doc.id}"></div>
+        </div>
+    `;
 
-                <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
-                    <p class="full-content">${fullContent}</p>
-<button id="readLessBtn-${doc.id}" style="background-color: #ff4f4f; color: white; padding: 8px 15px; border-radius: 5px; font-size: 0.8em; border: none; cursor: pointer;">
-    Devamını Gizle
-</button>
-
-                    <div class="comment-section" id="comment-section-${doc.id}">
-                        <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
-                        <button id="addCommentBtn-${doc.id}">Yorum Ekle</button>
-                    </div>
-                    <div id="commentsContainer-${doc.id}"></div>
-                </div>
-            `;
             storiesContainer.appendChild(storyDiv);
 
             document.getElementById(`readMoreBtn-${doc.id}`).addEventListener('click', function() {
@@ -168,6 +168,22 @@ async function loadLikes(storyId) {
         console.error('Error loading like status:', error);
     }
 }
+document.addEventListener("DOMContentLoaded", function() {
+    // Firebase yapılandırma bilgileri
+    const firebaseConfig = {
+        apiKey: "AIzaSyB9thHStut4GHSsHkTkrK_Bd_t4N_sDWLI",
+        authDomain: "teksanbilcom.firebaseapp.com",
+        projectId: "teksanbilcom",
+        storageBucket: "teksanbilcom.appspot.com",
+        messagingSenderId: "1000866577875",
+        appId: "1:1000866577875:web:49b2d0defb2646ee0fc326"
+    };
+
+ 
+   
+    // Formu dinle
+    
+});
 
 
 window.onload = fetchStories;  // Sayfa yüklendiğinde hikayeleri yükle

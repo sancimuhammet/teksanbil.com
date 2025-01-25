@@ -6,8 +6,10 @@
     <title>TekSanBil</title>
     <link rel="stylesheet" href="index.css">
     <script type="module" src="firebaseauth.js"></script>
+    <script type="module" src="contact.js"></script>
+    <link rel="icon" href="teksanbillogo.jpg" type="image/jpg">
+
    
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
@@ -19,11 +21,8 @@
             </div>
             
             <div class="right">
-                
                 <i class="fa fa-bars" id="menuIcon" ></i>
             </div>
-            
-            
         </div>
          
         <div id="sideMenu" class="side-menu">
@@ -36,11 +35,7 @@
             </ul>
         </div>
 
-
-<div id="menuOverlay" class="menu-overlay"></div>
-    </div>
-        </div>
-
+        <div id="menuOverlay" class="menu-overlay"></div>
     </div>
     
     <div id="contactContainer" class="contact-container">
@@ -76,61 +71,12 @@
     </div>
     
     <!-- Firebase Uygulama -->
-<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"></script>
-<!-- Firebase Auth -->
-<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"></script>
-<!-- Firebase Firestore -->
-<script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"></script>
 
-<script>
-    // Sayfa yüklendikten sonra çalışacak kodu ekleyin
-    document.addEventListener("DOMContentLoaded", function() {
-        // Firebase yapılandırma bilgileri
-        const firebaseConfig = {
-            apiKey: "AIzaSyB9thHStut4GHSsHkTkrK_Bd_t4N_sDWLI",
-            authDomain: "teksanbilcom.firebaseapp.com",
-            projectId: "teksanbilcom",
-            storageBucket: "teksanbilcom.firebasestorage.app",
-            messagingSenderId: "1000866577875",
-            appId: "1:1000866577875:web:49b2d0defb2646ee0fc326"
-        };
-
-        // Firebase'i başlat
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        // Formu dinle
-        document.getElementById("contactForm").addEventListener("submit", async function(e) {
-            e.preventDefault(); // Formun varsayılan gönderimini engelle
-
-            // Form verilerini al
-            const name = document.getElementById("name").value;
-            const email = document.getElementById("email").value;
-            const message = document.getElementById("message").value;
-
-            // Firebase'e veri gönderme
-            try {
-                const contactFormRef = db.collection("contactMessages").doc(); // Yeni bir belge oluşturuyoruz
-                await contactFormRef.set({
-                    name: name,
-                    email: email,
-                    message: message,
-                    date: new Date().toISOString() // Zaman damgası ekleyelim
-                });
-
-                alert("Mesajınız başarıyla gönderildi!");
-                
-                // Formu temizle
-                document.getElementById("contactForm").reset();
-            } catch (error) {
-                console.error("Mesaj gönderilirken hata oluştu:", error);
-                alert("Bir hata oluştu, lütfen tekrar deneyin.");
-            }
-        });
-    });
-</script>
-
-
+    <!-- Firebase ile iletişim kodları -->
+    
+    <!-- Menü ve Scroll JS dosyaları -->
     <script type="module" src="menu.js"></script>
     <script type="module" src="scroll.js"></script>
 </body>
