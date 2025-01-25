@@ -17,9 +17,22 @@ async function fetchStories() {
             const storyDiv = document.createElement('div');
             storyDiv.classList.add('story');
 
-            const contentPreview = story.content.substring(0, 150);
-            const fullContent = story.content.substring(150);
-
+            const maxLength = 150;
+            let content = story.content;
+            
+            let contentPreview = content.substring(0, maxLength);
+            let remainder = content.substring(maxLength);
+            
+            // Eğer kesilen içerik kelimenin ortasındaysa, tamamlanmış bir kelimeye kadar devam et.
+            if (remainder.length > 0) {
+              const nextSpaceIndex = remainder.indexOf(' ');
+              if (nextSpaceIndex !== -1) {
+                contentPreview += remainder.substring(0, nextSpaceIndex);
+                remainder = remainder.substring(nextSpaceIndex);
+              }
+            }
+            
+            const fullContent = remainder;
             storyDiv.innerHTML = `
     <div class="story-header">
         <h3>${story.title}</h3>
@@ -29,7 +42,7 @@ async function fetchStories() {
             <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
 
             <div class="story-content">
-        <p>${contentPreview}...</p> <!-- İlk kısmı göster -->
+        <p>${contentPreview}</p> <!-- İlk kısmı göster -->
             </div>
 
             <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
