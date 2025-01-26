@@ -36,8 +36,13 @@
 
 body {
     /* Arka planı geçişli (gradient) yapmak için */
-    background:linear-gradient(to right,#85b184,#2754b6, rgb(176, 190, 144));    
+    background: linear-gradient(to right, #ffffff, #e7bce5);
+
 }
+
+
+
+
 .story {
     width: 100%;
     padding: 20px 0;
@@ -124,10 +129,9 @@ button#readLessBtn:hover {
 /* Yorum kısmının stilizasyonu */
 .comment-section {
     margin-top: 20px;
-    background:linear-gradient(to right,#d4c3c3,#c9daff);    
+    background:none;
     padding: 15px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    
 }
 
 .comment-section textarea {
@@ -135,7 +139,7 @@ button#readLessBtn:hover {
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
     resize: vertical; /* Yalnızca dikey olarak boyutlandırılabilir */
 }
 
