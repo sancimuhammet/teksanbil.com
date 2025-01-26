@@ -14,11 +14,13 @@
 }
 .logo {
     display: inline-block;
-    margin-left: 20px; /* Sağında görünmesi için sola boşluk ekleyin */
+    margin-right: 10px; /* Sağında görünmesi için sola boşluk ekleyin */
+    vertical-align: middle; /* Başlık ile aynı hizada olsun */
+    margin-top: 15px; /* Menü iconu ile aynı hizada olması için üst boşluk ekleyin */
 }
 
 .logo img {
-    height: 50px; /* Logo yüksekliği */
+    height: 30px; /* Logo yüksekliği */
     width: auto; /* Oranları koruyarak genişliği ayarla */
     border-radius: 25px;
 }
