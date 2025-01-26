@@ -12,6 +12,16 @@
     padding: 0 20px; /* Alt yazı genişliği ile hizalamayı kolaylaştırır */
     border-bottom: 2px solid #ffffff; /* Görsel estetik için alt çizgi */
 }
+.logo {
+    display: inline-block;
+    margin-left: 20px; /* Sağında görünmesi için sola boşluk ekleyin */
+}
+
+.logo img {
+    height: 50px; /* Logo yüksekliği */
+    width: auto; /* Oranları koruyarak genişliği ayarla */
+    border-radius: 25px;
+}
 
 .center .subtitle {
     font-size: 16px; /* Alt yazı boyutu */
