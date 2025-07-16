@@ -1,159 +1,302 @@
+:root {
+  --topbar-height: 80px;
+}
+
 /* Genel body stili */
 body {
-   font-family: Arial, sans-serif;
-   background:linear-gradient(to right,#bcdf94,#e65a5a);   margin: 0;
-   padding: 0;
-   color: #fff;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #bcdf94, #e65a5a);
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  padding-top: var(--topbar-height);
+  box-sizing: border-box;
 }
 
+/* TOPBAR DÜZELTME */
+.topbar {
+  width: 100%;
+  height: var(--topbar-height);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #0f0f0f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.topbar .wrapper {
+  width: 100%;
+  max-width: 1366px;
+  display: flex;
+}
+
+.topbar .left,
+.topbar .right {
+  flex: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #ffffff;
+  margin-top: 15px;
+}
+
+.topbar .left i {
+  font-size: 1.5em;
+}
+
+.topbar .center {
+  flex: 6;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.center .title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  display: inline-block;
+  padding: 0 20px;
+  border-bottom: 2px solid #ffffff;
+}
+
+.center .subtitle {
+  font-size: 16px;
+  color: #8a8585;
+  margin-top: 5px;
+  display: inline-block;
+  width: fit-content;
+  padding: 0 20px;
+  margin-bottom: 5px;
+}
+
+/* Animasyonlar */
+.topbar .wrapper {
+  opacity: 0;
+  transition: all 0.5s;
+  transform: translateY(-10px);
+}
+
+.topbar .wrapper.active {
+  opacity: 1;
+}
+
+.topbar .center,
+.topbar .right {
+  transition: all 0.5s;
+  transform: translateX(-10px) translateY(-10px);
+}
+
+.topbar .wrapper.active .center,
+.topbar .wrapper.active .right {
+  transition: all 0.5s;
+  transform: translateX(0) translateY(0);
+}
+
+/* Menü */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 250px;
+  height: 100%;
+  background-color: #222;
+  color: #fff;
+  z-index: 1000;
+  transition: 0.4s ease;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.side-menu .fa-times {
+  font-size: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  margin: 15px 0;
+}
+
+.side-menu ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.side-menu ul li a:hover {
+  color: #f39c12;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(197, 196, 196, 0.5);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 998;
+}
+
+/* .add container */
 .add {
-   width: 100%;
-   height: calc(100vh - 110px);
-   display: flex;
-   justify-content: center;
-   align-items: flex-start;
-   padding: 20px;
-   flex-direction: column;
-   margin-top: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  flex-direction: column;
 }
 
-
-
-/* Form başlığını sade ve şık yapmak */
+/* Form başlığı */
 .form-title {
-   font-size: 2.5rem;
-   font-weight: bolder;
-   margin-bottom: 20px;
-   text-align: center;
-   
-   border-radius: 3px;
-   color: #000000;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 3px;
+  color: #000000;
 }
 
-/* Form stili */
+/* Form */
 .add form {
-   background-color: rgba(0, 0, 0, 0.9); /* Daha açık renk */
-   padding: 30px;
-   border-radius: 8px;
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-   margin-bottom: 40px; /* Alt boşluk ekleyerek ayırıyoruz */
+  background-color: rgba(0, 0, 0, 0.9);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
 .add form .text input,
 .add form .text textarea {
-   width: 100%;
-   padding: 10px;
-   border-radius: 5px;
-   border: none;
-   color: rgb(0, 0, 0);
-   font-size: 1.1rem;
-   margin-bottom: 15px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 1.1rem;
+  margin-bottom: 15px;
 }
 
 .add form .text textarea {
-   height: 180px;
-   resize: none;
+  height: 180px;
+  resize: none;
 }
 
-/* Form butonları */
 .add form .button button {
-   background-color: #4CAF50;
-   color: rgb(255, 255, 255);
-   border: none;
-   padding: 12px 20px;
-   font-size: 1rem;
-   cursor: pointer;
-   border-radius: 5px;
-   transition: background-color 0.3s;
+  background-color: #4caf50;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .add form .button button:hover {
-   background-color: #45a049;
+  background-color: #45a049;
 }
 
-/* Başlıklar ve silme butonları */
+/* Hikayeler */
 .story-list-container {
-   background-color: rgba(0, 0, 0, 0.6); /* Koyu renk */
-   padding: 20px;
-   border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 8px;
 }
 
 .story-item {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   background-color: rgba(0, 0, 0, 0.5);
-   padding: 15px;
-   border-radius: 5px;
-   margin-bottom: 10px;
-   color: #000000;
-   font-size: 1.1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: #000000;
+  font-size: 1.1rem;
 }
 
 .story-item h3 {
-   margin: 0;
-   font-size: 1.8rem;
+  margin: 0;
+  font-size: 1.8rem;
 }
 
-/* Silme butonları sağa hizalanmış */
 .story-item button.delete-btn {
-   background-color: #eb1212;
-   padding: 8px 15px;
-   border-radius: 5px;
-   color: white;
-   border: none;
-   cursor: pointer;
-   font-size: 0.9rem;
-   transition: background-color 0.3s ease;
+  background-color: #eb1212;
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
 .story-item button.delete-btn:hover {
-   background-color: #cec0c0;
+  background-color: #cec0c0;
 }
 
-/* Tablo stilini sadeleştiriyoruz */
 .story-table {
-   width: 100%;
-   border-collapse: collapse;
-   margin-top: 30px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
 }
 
 .story-table th,
 .story-table td {
-   padding: 15px;
-   text-align: left;
-   border: 1px solid #ccc;
-   color: #fff;
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #ccc;
+  color: #fff;
 }
 
 .story-table th {
-   background-color: #333;
-   font-weight: bold;
+  background-color: #333;
+  font-weight: bold;
 }
 
 .story-table tr:nth-child(even) {
-   background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .story-table tr:hover {
-   background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Footer kısmı */
+/* Footer */
 footer {
-   background-color: rgba(0, 0, 0, 0.7);
-   color: white;
-   text-align: center;
-   padding: 15px;
-   position: fixed;
-   bottom: 0;
-   width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
-/* Hikayeler başlığı stil */
+
+/* Hikayeler başlığı */
 .add h3 {
-   
-   color: #030303; /* Koyu gri renk */
-  
-   
-   
+  color: #030303;
 }
