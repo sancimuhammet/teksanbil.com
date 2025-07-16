@@ -9,13 +9,15 @@ body {
 /* .add container'ı stilini ayarlıyoruz */
 .add {
    width: 100%;
-   height: calc(100vh - 50px);
+   height: calc(100vh - 110px); /* 50px topbar + 60px margin */
    display: flex;
    justify-content: center;
    align-items: flex-start;
    padding: 20px;
    flex-direction: column;
+   margin-top: 60px;
 }
+
 
 /* Form başlığını sade ve şık yapmak */
 .form-title {
