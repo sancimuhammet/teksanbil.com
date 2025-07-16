@@ -2,27 +2,9 @@
 body {
    font-family: Arial, sans-serif;
    background:linear-gradient(to right,#bcdf94,#e65a5a);   margin: 0;
-   
+   padding: 0;
    color: #fff;
 }
-:root {
-    --topbar-height: 80px;
-}
-
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: var(--topbar-height);
-    width: 100%;
-    background-color: #0f0f0f;
-    z-index: 999;
-}
-
-body {
-    padding-top: var(--topbar-height);
-}
-
 
 .add {
    width: 100%;
