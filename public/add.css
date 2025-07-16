@@ -6,10 +6,9 @@ body {
    color: #fff;
 }
 
-/* .add container'ı stilini ayarlıyoruz */
 .add {
    width: 100%;
-   height: calc(100vh - 110px); /* 50px topbar + 60px margin */
+   height: calc(100vh - 110px);
    display: flex;
    justify-content: center;
    align-items: flex-start;
@@ -17,6 +16,7 @@ body {
    flex-direction: column;
    margin-top: 60px;
 }
+
 
 
 /* Form başlığını sade ve şık yapmak */
