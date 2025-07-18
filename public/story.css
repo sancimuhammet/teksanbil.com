@@ -68,12 +68,7 @@ body {
     font-weight: bold; /* Başlık için daha kalın bir yazı */
 }
 
-.story-content p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 10px 0;
-    white-space: pre-wrap;
-}
+
 
 .story-header p {
     margin: 5px 0;
