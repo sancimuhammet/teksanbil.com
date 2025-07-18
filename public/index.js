@@ -42,14 +42,14 @@ async function fetchStories() {
 
                 <img src="${story.imageUrl}" alt="Hikaye Görseli" class="story-image" />
                 <div class="story-content">
-                    <pre>${contentPreview}</pre>
+                    <p>${contentPreview}</p>
                 </div>
 
 
                 <button class="read-more-btn" id="readMoreBtn-${doc.id}">Devamını Oku</button>
     
                 <div class="full-story" id="fullStory-${doc.id}" style="display: none;">
-                    <pre class="full-content">${fullContent}</pre>
+                    <p class="full-content">${fullContent}</p>
                     <button id="readLessBtn-${doc.id}" style="background-color: #ff4f4f; color: white; padding: 8px 15px; border-radius: 5px; font-size: 0.8em; border: none; cursor: pointer;">Devamını Gizle</button>
                     <div class="comment-section" id="comment-section-${doc.id}">
                         <textarea id="commentContent-${doc.id}" placeholder="Yorumunuzu yazın..." required></textarea>
