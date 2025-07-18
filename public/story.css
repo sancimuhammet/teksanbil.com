@@ -165,4 +165,11 @@ button#readLessBtn:hover {
 }
 /* Story Title */
 
+.story-content p,
+.full-content {
+  white-space: pre-wrap;
+  word-wrap: break-word; /* uzun kelimeler taşarsa satıra sığdırır */
+  font-family: 'Georgia', serif; /* istersen stil de katabiliriz */
+  line-height: 1.6; /* okunabilirlik için satır aralığı */
+}
 
