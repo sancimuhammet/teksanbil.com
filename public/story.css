@@ -68,6 +68,12 @@ body {
     font-weight: bold; /* Başlık için daha kalın bir yazı */
 }
 
+.story-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 10px 0;
+    white-space: pre-wrap;
+}
 
 .story-header p {
     margin: 5px 0;
@@ -158,11 +164,5 @@ button#readLessBtn:hover {
     background-color: #333; /* Daha koyu bir siyah */
 }
 /* Story Title */
-
-.story-content p {
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 10px 0;
-}
 
 
