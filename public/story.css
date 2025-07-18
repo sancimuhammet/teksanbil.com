@@ -5,6 +5,10 @@
     margin: 0 auto; /* Ortala */
     padding: 20px 10px; /* Etrafında boşluk bırak */
 }
+#storiesContainer {
+    margin-top: 100px;
+}
+
 
 /* Hikayeler Arası Ayırıcı */
 .story + .story::before {
